@@ -15,15 +15,19 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { WebReqInterceptor } from './web-req.interceptor';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { EditListComponent } from './pages/edit-list/edit-list.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { listFilterPipe } from './pages/_helpers/list-filter.pipe';
 import { taskFilterPipe } from './pages/_helpers/task-filter.pipe';
 import {NgxPaginationModule} from 'ngx-pagination'
 import { DateAgoPipe } from './pages/_helpers/date-ago.pipe';
 import { MomentPipe } from './pages/_helpers/moment.pipe';
-
 import { OrderModule } from 'ngx-order-pipe';
+import { DialogBoxComponent } from './pages/dialog-box/dialog-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBoxFileComponent } from './pages/dialog-box-file/dialog-box-file.component';
+import { SharedService } from './pages/_helpers/shared-service';
+
+
 
 
 @NgModule({
@@ -34,13 +38,16 @@ import { OrderModule } from 'ngx-order-pipe';
     NewTaskComponent,
     LoginPageComponent,
     SignupPageComponent,
-    EditListComponent,
     EditTaskComponent,
     JwPaginationComponent,
     listFilterPipe,
     taskFilterPipe,
     DateAgoPipe,
     MomentPipe,
+    DialogBoxComponent,
+    DialogBoxFileComponent,
+    
+    
     
     
     
@@ -56,11 +63,17 @@ import { OrderModule } from 'ngx-order-pipe';
     NgxPaginationModule,
     OrderModule,
     BrowserAnimationsModule,
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    MatDialogModule,
+    
+    
+    
     
   ],
+  entryComponents: [DialogBoxComponent,DialogBoxFileComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true }
+    
   ],
   bootstrap: [AppComponent]
 })

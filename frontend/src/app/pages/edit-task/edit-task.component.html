@@ -1,14 +1,36 @@
+
 <div class="centered-content">
+  <form #editForm = "ngForm" ngNativeValidate (ngSubmit)="updateTask()"> 
     <div class="modal-box">
-      <h1 class="title">
-        Edit task
-      </h1>
+      <h1 class="title">Edit task</h1>
+      <div class="field ">
+        Title:
+        <input #taskTitleInput [(ngModel)]="task.title" name="title" class="input has-background-light is-medium"  type="text" placeholder="Enter task name..." required pattern=".{2,}" autofocus   title="Please enter at least 2 characters" ngModel >    
+      </div>
+
+      <div class="field ">
+      Deadline:
+      <input type="date" [ngModel]="task.deadline | date:'yyyy-MM-dd'" name="deadline" (ngModelChange)="task.deadline = $event"  min="{{date}}" class="input has-background-light is-medium"  pattern="{{datepattern}}"  ngModel>
+      </div>
   
-      <input #taskTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter task name...">
+      <div class="field ">
+      Responsible:
+      <input #taskResponsibleInput accept="text/plain"  [(ngModel)]="task.responsible" name="responsible" class="input has-background-light is-medium" type="text" placeholder="Responsible..."ngModel>  
+      </div>
+
+      Description:
+      <textarea #taskDescriptioneInput [(ngModel)]="task.description"  name="description" class="textarea has-background-light is-medium" placeholder="Description..."ngModel></textarea>
+      <br>
+       File:
+      <br>
+    
+    <input type="file" accept="text/plain" class="custom-file-input"  name ="file" #fileInput (change)="onChange($event.target.files)" ngModel >
       <br><br>
       <div class="buttons is-right">
-        <button class="button is-medium" routerLink="../..">Cancel</button>
-        <button class="button is-primary has-text-white is-medium" (click)="updateTask(taskTitleInput.value)">Save</button>
+        <button type="button" class="button is-medium is-danger" routerLink="../..">Cancel</button>
+        <input type="submit" name="submit" class="button is-primary has-text-white is-medium" value="submit" >
       </div>
     </div>
+  </form>
   </div>
+  

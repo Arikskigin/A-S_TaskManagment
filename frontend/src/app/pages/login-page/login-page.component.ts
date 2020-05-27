@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/auth.service';
 import { HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import{FormBuilder, FormGroup,Validators} from '@angular/forms'
-import { MustMatch } from 'src/app/pages/_helpers/must-match.validator';
+
 
 
 @Component({
@@ -16,10 +16,18 @@ import { MustMatch } from 'src/app/pages/_helpers/must-match.validator';
 export class LoginPageComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-
+  message: string;
+  flag=false;
+  
   
  
   constructor(private authService: AuthService, private router: Router,private formBuilder:FormBuilder) {
+    
+  
+   }
+
+  ngOnInit() {
+    
     document.addEventListener('DOMContentLoaded', () => {
 
       // Get all "navbar-burger" elements
@@ -45,55 +53,43 @@ export class LoginPageComponent implements OnInit {
       }
     
     });
-   }
-
-  ngOnInit() {
     this.registerForm = this.formBuilder.group({
 
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
-  }, {
-    validator: MustMatch('password', 'confirmPassword')
-}
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      
+  }, 
+    
+
       
   );
   }
 
   onLoginButtonClicked(email: string, password: string) {
-    this.authService.login(email, password).subscribe((res: HttpResponse<any>) => {
-      if (res.status === 200) {
-        // we have logged in successfully
-        this.router.navigate(['/lists']);
-      }
-      console.log(res);
-      if(email=="arik30000@gmail.com")
-      {
-      const string="Welcome Admin";
-      alert(string);
-      }
-      else{
-      const string ="Welcome User: " +email;
-      alert(string);
-      }
-      
-      
-    });
-  }
-  
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
+    
+    this.submitted = true;
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
+          
             return;
         }
-
-        
-    }
-}
+      
+   this.authService.login(email, password).subscribe((res: HttpResponse<any>) => {
+      
+    })
+    
   
+    setTimeout(() => this.registerForm.reset(), 2000);
+   
+    
+      
+    
+    
+}
 
+  
+// convenience getter for easy access to form fields
+get f() { return this.registerForm.controls; }
+} 
+    

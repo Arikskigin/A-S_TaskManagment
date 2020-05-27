@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const TaskSchema = new mongoose.Schema({
+    
     title: {
         type: String,
         required: true,
@@ -9,6 +10,25 @@ const TaskSchema = new mongoose.Schema({
     },
     date:{
         type:Date
+    },
+    deadline:{
+        type:Date
+    },
+    creator:{
+        type: String, 
+    },
+    responsible:{
+        type: String, 
+    },
+    description:{
+        type: String,   
+    },
+    file:{
+        type: String,
+ 
+    },
+    filename:{
+        type:String,
     },
     _listId: {
         type: mongoose.Types.ObjectId,

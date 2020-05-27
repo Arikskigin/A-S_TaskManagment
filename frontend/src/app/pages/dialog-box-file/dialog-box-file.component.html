@@ -1,0 +1,17 @@
+<div class="modal">
+
+
+    
+<div class="modal-content">
+    <span class="close" (click)="closeDialog()">&times;</span>
+        <br>
+        <div *ngIf="tasks.file">
+        <h3 style="text-align: center;font-weight: bolder;">File Content</h3>
+        <pre style="display: block;
+        font-family: monospace;
+        white-space: pre;
+        margin: 1em 0; background-color: rgba(174, 199, 195, 0.815);"> {{tasks.file}} </pre>
+             
+</div>
+</div>
+</div>

@@ -6,4 +6,10 @@ export class Task {
     title: string;
     date:Date;
     completed: boolean;
+    deadline:Date;
+    creator:string;
+    responsible:string;
+    description:string;
+    file:File;
+  filename: string;
 }

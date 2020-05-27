@@ -1,14 +1,58 @@
+
+
 <div class="centered-content">
+  <form [formGroup]="registerForm" >
   <div class="modal-box">
     <h1 class="title">
       Create a new task
     </h1>
 
-    <input #taskTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter task name...">
-    <br><br>
-    <div class="buttons is-right">
-      <button class="button is-medium" routerLink="../../lists">Cancel</button>
-      <button class="button is-primary has-text-white is-medium" (click)="createTask(taskTitleInput.value)">Create</button>
-    </div>
+    <div class="field ">
+    Title:
+    <input #taskTitleInput   class="input has-background-light is-medium" formControlName="title"[ngClass]="{ 'is-danger': submitted && f.title.errors }" type="text" placeholder="Enter task name...">
+    <div *ngIf="submitted && f.title.errors" class="invalid-feedback has-text-danger">
+      <div *ngIf="f.title.errors.required">Title is Required</div>
+      <div *ngIf="f.title.errors.minlength">Title minlength is 2</div>
   </div>
 </div>
+<div class="field ">
+  Creator:
+  <input #taskCreatorinenput   class="input has-background-light is-medium"  type="text" value="{{getUsername()}}" readonly>
+  
+</div>
+<div class="field ">
+    Deadline:
+    <input #taskDeadIlinenput min="{{date}}"  max="2025-01-01"  class="input has-background-light is-medium" formControlName="deadline"[ngClass]="{ 'is-danger': submitted && f.deadline.errors }" type="date"  >
+    <div *ngIf="submitted && f.deadline.errors" class="invalid-feedback has-text-danger">
+      <div *ngIf="f.deadline.errors.required">Deadline is Required</div>
+      <div *ngIf="f.deadline.errors.pattern">Format: YYYY-MM-DD</div>
+      
+  </div>
+</div>
+<div class="field ">
+  Responsible:
+  <input #taskResponsibleInput  class="input has-background-light is-medium" type="text" formControlName="responsible"[ngClass]="{ 'is-danger': submitted && f.responsible.errors }"placeholder="Responsible...">
+  <div *ngIf="submitted && f.responsible.errors" class="invalid-feedback has-text-danger">
+    <div *ngIf="f.responsible.errors.required">Name is required</div>
+    <div *ngIf="f.responsible.errors.pattern">Format:name lastname</div>
+</div>
+</div>
+    
+    Description:
+    <textarea #taskDescriptioneInput  class="textarea has-background-light is-medium" placeholder="Description..."></textarea>
+    <br>
+    File:
+    <br>
+    
+    
+    <input type="file" id='browse' #fileInput class="custom-file-input"   (change)="onChange($event.target.files)" accept="text/plain" >
+    
+    <br><br>
+    <div class="buttons is-right">
+      <button class="button is-medium is-danger" routerLink="..">Cancel</button>
+      <button class="button is-primary has-text-white is-medium" (click)="createTask(taskTitleInput.value,taskCreatorinenput.value,taskDeadIlinenput.value,taskResponsibleInput.value,taskDescriptioneInput.value,fileInput.name)">Create</button>
+    </div>
+  </div>
+</form>
+</div>
+

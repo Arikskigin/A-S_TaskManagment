@@ -1,0 +1,36 @@
+
+<div class="modal">
+  
+  <div class="modal-content">
+    <img src="assets/img/info.jpg"  width="150" height="150" style="background-color:#fefefe ;margin-left: 30%;">
+    <span class="close" (click)="closeDialog()">&times;</span>
+    <div class="task-text has-text-large">
+      <br>
+      <p> 
+      Published:{{tasks.date|date:'short'}}
+      </p>
+      <p> 
+      Creator:{{tasks.creator}}
+        </p>
+      <p> 
+      Deadline:{{tasks.deadline | date: 'dd/MM/yyyy'}}
+      </p> 
+      <p> 
+      Responsible:{{tasks.responsible}}
+      </p>
+      <p> 
+      Description:{{tasks.description}}
+      
+      </p>  
+      <div *ngIf="tasks.file">
+      File:
+      <a (click)="downloadFileFromDb()"> Download</a>
+      
+      </div>
+    
+      
+    </div>
+  </div>
+  
+  
+

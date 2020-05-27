@@ -1,38 +1,30 @@
 @import '../../../main-styles.scss';
 
 .task-manager-container {
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    max-width: 1000px;
-    max-height: 600px;
-}
-
-.sidebar {
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
-    width: 280px;
-    background: white;
-
-    padding: 42px;
-
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    max-width: 1250px;
+    max-height: 650px;
+    margin-left: 1%;
 }
+
+
 
 .task-list-container {
     position: relative;
     display: flex;
-    overflow: scroll;
     flex-direction: column;
     flex-grow: 0.7;
     padding: 42px;
-
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    
 
 
     .top-bar {
@@ -101,10 +93,7 @@
         }
     }
 
-    &.completed .task-text {
-        text-decoration: line-through;
-        opacity: 0.8;
-    }
+    
 
 
     .task-text {
@@ -120,9 +109,9 @@
 }
 
 .circle-add-button {
-    position: absolute;
-    bottom: 35px;
-    right: 35px;
+    
+    margin-left: 90%;
+    margin-top: 2%;
     height: 50px;
     width: 50px;
     border-radius: 50%;

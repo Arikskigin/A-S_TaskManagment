@@ -16,6 +16,11 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         unique: true
     },
+    name:{
+        type: String,
+        minlength: 3
+           
+    },
     password: {
         type: String,
         required: true,
@@ -41,7 +46,7 @@ UserSchema.methods.toJSON = function () {
     const userObject = user.toObject();
 
     // return the document except the password and sessions (these shouldn't be made available)
-    return _.omit(userObject, ['password', 'sessions']);
+    return _.omit(userObject, ['password', 'sessions','name']);
 }
 
 UserSchema.methods.generateAccessAuthToken = function () {

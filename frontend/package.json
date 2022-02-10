@@ -42,7 +42,7 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-order-pipe": "^2.0.4",
     "ngx-pagination": "^5.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.3.3",
     "socket.io-client": "^2.3.0",

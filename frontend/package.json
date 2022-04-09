@@ -38,7 +38,7 @@
     "jszip": "^3.3.0",
     "jw-angular-pagination": "^1.1.0",
     "modal": "^1.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng2-search-filter": "^0.5.1",
     "ngx-order-pipe": "^2.0.4",
     "ngx-pagination": "^5.0.0",
